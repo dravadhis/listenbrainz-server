@@ -63,6 +63,10 @@ function format_namenode {
             hdfs namenode -format -nonInteractive -force
 }
 
+function open_clickhouse_client {
+    invoke_docker_compose exec clickhouse_server clickhouse client
+}
+
 # Arguments following "manage" are passed to manage.py inside a new web container.
 if [[ "$1" == "manage" ]]; then shift
     echo "Running manage.py..."
@@ -82,6 +86,9 @@ elif [[ "$1" == "psql" ]]; then
 elif [[ "$1" == "timescale" ]]; then
     echo "Connecting to timescale..."
     open_timescale_shell
+elif [[ "$1" == "clickhouse" ]]; then
+    echo "Running clickhouse client..."
+    open_clickhouse_client
 elif [[ "$1" == "spark" ]]; then shift
     if [[ "$1" == 'format' ]]; then
         format_namenode
