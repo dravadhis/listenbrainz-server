@@ -49,7 +49,7 @@ services:
   clickhouse_server:
     image: yandex/clickhouse-server
     volumes:
-    # Currently clickhouse data is stored in bind mount. If need to access 
+    # Currently clickhouse data is stored in volume. If need to access 
     # clickhouse files directly, change 'clickhouse_store' to bind mount
       - clickhouse_store:/var/lib/clickhouse
       - clickhouse_store:/var/log/clickhouse-server
