@@ -52,7 +52,8 @@ services:
     # Currently clickhouse data is stored in volume. If need to access 
     # clickhouse files directly, change 'clickhouse_store' to bind mount
       - clickhouse_store:/var/lib/clickhouse
-      - clickhouse_store:/var/log/clickhouse-server
+      # - clickhouse_store:/var/log/clickhouse-server
+      - ./services/clickhouse/data.parquet:/var/lib/clickhouse/user_files/data.parquet
       - ./services/clickhouse/config.xml:/etc/clickhouse-server/config.d/config.xml
       - ./services/clickhouse/metrika.xml:/etc/clickhouse-server/config.d/metrika.xml
       - ./services/clickhouse/users.xml:/etc/clickhouse-server/config.d/users.xml
