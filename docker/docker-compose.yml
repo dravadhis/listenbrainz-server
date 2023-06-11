@@ -47,14 +47,14 @@ services:
 
   # clickhouse client is not required to be included as another service.
   clickhouse_server:
-    image: yandex/clickhouse-server
+    image: clickhouse/clickhouse-server
     volumes:
     # Currently clickhouse data is stored in volume. If need to access 
     # clickhouse files directly, change 'clickhouse_store' to bind mount
       - clickhouse_store:/var/lib/clickhouse
-      # - clickhouse_store:/var/log/clickhouse-server
+      - clickhouse_store:/var/log/clickhouse-server
       - ./services/clickhouse/config.xml:/etc/clickhouse-server/config.d/config.xml
-      - ./services/clickhouse/metrika.xml:/etc/clickhouse-server/config.d/metrika.xml
+      # - ./services/clickhouse/metrika.xml:/etc/clickhouse-server/config.d/metrika.xml
       - ./services/clickhouse/users.xml:/etc/clickhouse-server/config.d/users.xml
     ports:
       - "8123:8123"

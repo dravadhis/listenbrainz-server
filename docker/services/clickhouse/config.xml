@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<yandex>
+<clickhouse>
      <logger>
         <!-- Possible levels: https://github.com/pocoproject/poco/blob/develop/Foundation/include/Poco/Logger.h#L105 -->
         <level>trace</level>
@@ -19,7 +19,7 @@
     <tmp_path>/var/lib/clickhouse/tmp/</tmp_path>
 
     <!-- Path of file from which 'incl' substitutions are taken -->
-    <include_from>/etc/clickhouse-server/config.d/metrika.xml</include_from>
+    <!-- <include_from>/etc/clickhouse-server/config.d/metrika.xml</include_from> -->
 
     <!-- Directory with user provided files that are accessible by 'file' table function. -->
     <user_files_path>/var/lib/clickhouse/user_files/</user_files_path>
@@ -60,4 +60,4 @@
         <!-- Interval of flushing data. -->
         <flush_interval_milliseconds>7500</flush_interval_milliseconds>
     </query_log>
-</yandex>
+</clickhouse>

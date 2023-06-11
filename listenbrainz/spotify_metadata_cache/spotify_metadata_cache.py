@@ -18,7 +18,7 @@ class SpotifyMetadataCache(ConsumerMixin):
         self.app = app
         self.queue = None
         self.connection = None
-        self.unique_exchange = Exchange(self.app.config["UNIQUE_EXCHANGE"], "fanout", durable=False)
+        self.unique_exchange = Exchange(self.app.config["UNIQUE_EXCHANGE"], "fanout", durable=True)
         # this queue gets spotify album ids from listens
         self.listens_queue = Queue(
             self.app.config["SPOTIFY_METADATA_QUEUE"],
