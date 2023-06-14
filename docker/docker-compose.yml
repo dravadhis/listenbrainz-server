@@ -49,15 +49,14 @@ services:
   clickhouse_server:
     image: clickhouse/clickhouse-server
     volumes:
-    # Currently clickhouse data is stored in volume. If need to access 
-    # clickhouse files directly, change 'clickhouse_store' to bind mount
       - clickhouse_store:/var/lib/clickhouse
-      - clickhouse_store:/var/log/clickhouse-server
       - ./services/clickhouse/config.xml:/etc/clickhouse-server/config.d/config.xml
-      # - ./services/clickhouse/metrika.xml:/etc/clickhouse-server/config.d/metrika.xml
       - ./services/clickhouse/users.xml:/etc/clickhouse-server/config.d/users.xml
     ports:
-      - "8123:8123"
+      - 8123:8123
+      - 9000:9000
+    depends_on:
+      - rabbitmq
 
   web:
     build:
