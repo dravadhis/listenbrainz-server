@@ -58,7 +58,7 @@ def submit_release_impl(token, release, url):
     resp = requests.get(
         "https://musicbrainz.org/ws/2/release/%s?inc=recordings+artists&fmt=json" % release)
     if resp.status_code != 200:
-        print("Failed to fetch album: %d" % resp.code)
+        print("Failed to fetch album: %d" % resp.status_code)
         sys.exit(-1)
 
     jdata = resp.json()
