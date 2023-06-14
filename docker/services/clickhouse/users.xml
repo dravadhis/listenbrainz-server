@@ -7,9 +7,11 @@
             <!-- Maximum memory usage for processing single query, in bytes. -->
             <max_memory_usage>1000000000</max_memory_usage>
 
-            <!-- Use cache of uncompressed blocks of data. Meaningful only for processing many of very short queries. -->
             <use_uncompressed_cache>0</use_uncompressed_cache>
+            
             <access_management>1</access_management>
+            
+            <allow_experimental_object_type>1</allow_experimental_object_type>
         </default>
     </profiles>
 
@@ -18,9 +20,6 @@
         <!-- To change username, replace admin with with desired username  -->
         <admin>
             <password>admin</password>
-            <!-- <networks incl="networks" replace="replace">
-                <ip>::/0</ip> -->
-            <!-- </networks> -->
             <profile>default</profile>
             <quota>default</quota>
         </admin>
@@ -41,36 +40,11 @@
                     In first line will be password and in second - corresponding SHA256.
             -->
             <password></password>
-
-            <!-- List of networks with open access.
-
-                    To open access from everywhere, specify:
-                    <ip>::/0</ip>
-
-                    To open access only from localhost, specify:
-                    <ip>::1</ip>
-                    <ip>127.0.0.1</ip>
-
-                    Each element of list has one of the following forms:
-                    <ip> IP-address or network mask. Examples: 213.180.204.3 or 10.0.0.1/8 or 10.0.0.1/255.255.255.0
-                2a02:6b8::3 or 2a02:6b8::3/64 or 2a02:6b8::3/ffff:ffff:ffff:ffff::.
-                    <host> Hostname. Example: server01.yandex.ru.
-                        To check access, DNS query is performed, and all received addresses compared to peer address.
-                    <host_regexp> Regular expression for host names. Example, ^server\d\d-\d\d-\d\.yandex\.ru$
-                        To check access, DNS PTR query is performed for peer address and then regexp is applied.
-                        Then, for result of PTR query, another DNS query is performed and all received addresses compared to peer address.
-                        Strongly recommended that regexp is ends with $
-                    All results of DNS requests are cached till server restart.
-            -->
-            <!-- <networks incl="networks" replace="replace">
-                <ip>::/0</ip>
-            </networks> -->
-
-            <!-- Settings profile for user. -->
+        
             <profile>default</profile>
 
-            <!-- Quota for user. -->
             <quota>default</quota>
+            
         </default>
     </users>
 </clickhouse>
