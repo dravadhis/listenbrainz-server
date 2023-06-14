@@ -12,52 +12,20 @@
 
     <http_port>8123</http_port>
 
-    <!-- Path to data directory, with trailing slash. -->
     <path>/var/lib/clickhouse/</path>
 
-    <!-- Path to temporary data for processing hard queries. -->
     <tmp_path>/var/lib/clickhouse/tmp/</tmp_path>
 
-    <!-- Path of file from which 'incl' substitutions are taken -->
-    <!-- <include_from>/etc/clickhouse-server/config.d/metrika.xml</include_from> -->
-
-    <!-- Directory with user provided files that are accessible by 'file' table function. -->
     <user_files_path>/var/lib/clickhouse/user_files/</user_files_path>
 
-    <!-- Path to configuration file with users, access rights, profiles of settings, quotas. -->
     <users_config>users.xml</users_config>
 
-
-
-    <!-- Default profile of settings. -->
     <default_profile>default</default_profile>
 
-    <http_server_default_response><![CDATA[<html ng-app="SMI2"><head><base href="http://ui.tabix.io/"></head><body><div ui-view="" class="content-ui"></div><script src="http://loader.tabix.io/master.js"></script></body></html>]]></http_server_default_response>
-    
-    <rabbitmq>
+     <rabbitmq>
         <username>guest</username>
         <password>guest</password>
+        <vhost>/</vhost>
     </rabbitmq>
 
-    
-   <!-- Query log. Used only for queries with setting log_queries = 1. -->
-    <query_log>
-        <!-- What table to insert data. If table is not exist, it will be created.
-             When query log structure is changed after system update,
-              then old table will be renamed and new table will be created automatically.
-        -->
-        <database>system</database>
-        <table>query_log</table>
-        <!--
-            PARTITION BY expr https://clickhouse.yandex/docs/en/table_engines/custom_partitioning_key/
-            Example:
-                event_date
-                toMonday(event_date)
-                toYYYYMM(event_date)
-                toStartOfHour(event_time)
-        -->
-        <partition_by>toYYYYMM(event_date)</partition_by>
-        <!-- Interval of flushing data. -->
-        <flush_interval_milliseconds>7500</flush_interval_milliseconds>
-    </query_log>
 </clickhouse>
