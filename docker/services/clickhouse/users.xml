@@ -19,7 +19,7 @@
     <users>
         <!-- To change username, replace admin with with desired username  -->
         <admin>
-            <password>admin</password>
+            <password>123456</password>
             <profile>default</profile>
             <quota>default</quota>
         </admin>

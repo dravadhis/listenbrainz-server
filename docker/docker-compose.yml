@@ -45,13 +45,14 @@ services:
     ports:
       - "127.0.0.1:25672:15672"
 
-  # clickhouse client is not required to be included as another service.
+  # Including clickhouse_client alongside the server has been deprecated.
   clickhouse_server:
     image: clickhouse/clickhouse-server
     volumes:
       - clickhouse_store:/var/lib/clickhouse
       - ./services/clickhouse/config.xml:/etc/clickhouse-server/config.d/config.xml
       - ./services/clickhouse/users.xml:/etc/clickhouse-server/config.d/users.xml
+      - ./services/clickhouse/lbrmq.sql:/var/lib/clickhouse/user_files/lbrmq.sql
     ports:
       - 8123:8123
       - 9000:9000

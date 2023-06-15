@@ -63,6 +63,7 @@ function format_namenode {
             hdfs namenode -format -nonInteractive -force
 }
 
+# Run clickhouse client (similar to postgres' ps shell)
 function open_clickhouse_client {
     invoke_docker_compose exec clickhouse_server clickhouse client
 }
@@ -89,6 +90,10 @@ elif [[ "$1" == "timescale" ]]; then
 elif [[ "$1" == "clickhouse" ]]; then
     echo "Running clickhouse client..."
     open_clickhouse_client
+# execute for first time when building the local setup    
+elif [[ "$1" == "clickhouser" ]]; then
+    echo "Running clickhouse client..."
+    invoke_docker_compose exec clickhouse_server clickhouse client --queries-file="/var/lib/clickhouse/user_files/lbrmq.sql"
 elif [[ "$1" == "spark" ]]; then shift
     if [[ "$1" == 'format' ]]; then
         format_namenode
