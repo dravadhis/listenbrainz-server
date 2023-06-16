@@ -19,9 +19,13 @@
     <user_files_path>/var/lib/clickhouse/user_files/</user_files_path>
 
     <users_config>users.xml</users_config>
-
+    
+    <include_from>/etc/clickhouse-server/config.d/metrika.xml</include_from>
+    
     <default_profile>default</default_profile>
-
+    
+    <http_server_default_response><![CDATA[<html ng-app="SMI2"><head><base href="http://ui.tabix.io/"></head><body><div ui-view="" class="content-ui"></div><script src="http://loader.tabix.io/master.js"></script></body></html>]]></http_server_default_response>    
+    
      <rabbitmq>
         <username>guest</username>
         <password>guest</password>

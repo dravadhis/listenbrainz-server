@@ -50,7 +50,8 @@ services:
     image: clickhouse/clickhouse-server
     volumes:
       - clickhouse_store:/var/lib/clickhouse
-      - ./services/clickhouse/config.xml:/etc/clickhouse-server/config.d/config.xml
+      - ./services/clickhouse/config.xml:/etc/clickhouse-server/config.d/config.xml      
+      - ./services/clickhouse/metrika.xml:/etc/clickhouse-server/config.d/metrika.xml
       - ./services/clickhouse/users.xml:/etc/clickhouse-server/config.d/users.xml
       - ./services/clickhouse/lbrmq.sql:/var/lib/clickhouse/user_files/lbrmq.sql
     ports:
